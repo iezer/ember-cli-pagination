@@ -179,3 +179,11 @@ moduleForAcceptance('Acceptance - Pagination Local', {
   }
 });
 createTests(todosTestLocal,"/todos/local");
+
+todosTestLocal('local pagination responds to content modification', function(assert) {
+  click('button:contains("Only Gutters")');
+
+  andThen(function() {
+    assert.equal(find("table tr.todo:contains(Gutters)").length, 10, 'filter applied');
+  });
+});
